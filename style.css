@@ -1,0 +1,19 @@
+body{
+    background-color: blue;
+}
+h2{
+    color: white;
+}
+p{
+    font-size: 29px;
+    color: rgb(238, 12, 219);
+    font-weight: bold;
+}
+span{
+    color: red;
+    font-size: 25px;
+}
+h4{
+    font-size: 20px;
+    color: rgb(75, 220, 239);
+}

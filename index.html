@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q1. Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h2>
+    <p id="q1"></p>
+    <h4><span>Reason: </span>We create instances of both Parent and Child objects using the constructors. We then use the methods greet() and introduce() on the instances of the Parent and Child objects, respectively.</h4><br>
+    <h2>Q2. Write code to explain prototype chaining</h2>
+    <p id="q2"></p>
+    <h4><span>Reason.</span>In this example, we have two constructor functions, Animal and Dog. The Dog constructor inherits from the Animal prototype using Object.create(). The Dog prototype has its own method fetch, while both Animal and Dog instances can access the sayHello method defined in the Animal prototype due to prototype chaining.
+    </h4><br>
+    <h2>Q3. Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h2>
+    <p id="q3"></p>
+    <h4><span>Reason: </span>In this example, we've added a method named calculateSum to the prototype of the Array object. This method uses the reduce function to iterate through the array and calculate the sum of all elements. Then, we create three arrays (array1, array2, and array3) and calculate the sum of their elements using the calculateSum method. </h4><br>
+    <h2>Q4. Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h2>
+    <p id="q4"></p>
+    <h4><span>Reason: </span>In this example, the getAllPropertyNames function takes an object as its parameter and retrieves all property names of both the object and its inherited prototypes. It uses a loop to traverse through the object and its prototypes using the Object.getPrototypeOf method. </h4>
+    <script src="./index.js"></script>
+</body>
+</html>
