@@ -8,16 +8,109 @@
 </head>
 <body>
     <h2>Q1. Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h2>
+    <!-- <p id="q1"></p> -->
+    <pre>function Parent(name){
+        this.name = name;
+    }
+    Parent.prototype.greet =function(){
+        return `Hello,I am ${this.name}!`
+    };
+    function Child(name,age){
+        Parent.call(this,name);
+        this.age = age;
+    }
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+    
+    Child.prototype.introduce = function(){
+        return `Hi I am ${this.name} and I am ${this.age} year old.`;
+    
+    }
+    const parent = new Parent('OM')
+    const child = new Child('Ginni',10)
+    let ques1 = document.getElementById("q1")
+    ques1.textContent = parent.greet() + '' + child.greet() + ' ' + child.introduce();
+    console.log(ques1)
+    </pre>
     <p id="q1"></p>
     <h4><span>Reason: </span>We create instances of both Parent and Child objects using the constructors. We then use the methods greet() and introduce() on the instances of the Parent and Child objects, respectively.</h4><br>
+
+
+
     <h2>Q2. Write code to explain prototype chaining</h2>
+    <pre>function Animal(name){
+        this.name = name;
+    }
+    Animal.prototype.sayHello = function(){
+        return `Hello I am ${this.name} `
+    }
+    function Dog(name,bread){
+        Animal.call(this,name)
+        this.bread = bread
+    }
+    Dog.prototype = Object.create(Animal.prototype);
+    Dog.prototype.constructor = Dog;
+    
+    Dog.prototype.fetch = function(){
+        return `${this.name} is fetchinh the ball. `
+    }
+    const animal = new Animal("Generic Animal");
+    const dog = new Dog("Buddy","Golden Retriever")
+    
+    const ques2 = document.getElementById("q2")
+    ques2.textContent = animal.sayHello() + '' + dog.sayHello() + '' + dog.fetch();
+    console.log(ques2)</pre>
     <p id="q2"></p>
     <h4><span>Reason.</span>In this example, we have two constructor functions, Animal and Dog. The Dog constructor inherits from the Animal prototype using Object.create(). The Dog prototype has its own method fetch, while both Animal and Dog instances can access the sayHello method defined in the Animal prototype due to prototype chaining.
     </h4><br>
+
+
     <h2>Q3. Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h2>
+    <pre>Array.prototype.calculateSum = function(){
+        return this.reduce((total,current) => total + current , 0)
+    };
+    const array1 = [1,2,3,4,5];
+    const array2 = [10,20,30,40,50];
+    const array3 = [5,10,15,20,25];
+    
+    const sum1 = array1.calculateSum();
+    const sum2 = array2.calculateSum();
+    const sum3 = array3.calculateSum();
+    
+    const ques3 = document.getElementById("q3")
+    ques3.textContent = `Sum of array1: ${sum1} Sum of array2: ${sum2} Sum of array3: ${sum3}`;</pre>
     <p id="q3"></p>
     <h4><span>Reason: </span>In this example, we've added a method named calculateSum to the prototype of the Array object. This method uses the reduce function to iterate through the array and calculate the sum of all elements. Then, we create three arrays (array1, array2, and array3) and calculate the sum of their elements using the calculateSum method. </h4><br>
+
+
     <h2>Q4. Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h2>
+    <pre>function getAllPropertyNames(obj) {
+        const propertyNames = [];
+      
+        let currentObj = obj;
+        while (currentObj !== null) {
+          propertyNames.push(...Object.getOwnPropertyNames(currentObj));
+          currentObj = Object.getPrototypeOf(currentObj);
+        }
+        
+        return propertyNames;
+      }
+      const sampleObject = {
+        prop1: 'value1',
+        prop2: 'value2'
+      };
+      
+      const inheritedObject = Object.create(sampleObject);
+      inheritedObject.prop3 = 'value3';
+      
+      const propertyNamesSample = getAllPropertyNames(sampleObject);
+      const propertyNamesInherited = getAllPropertyNames(inheritedObject);
+      
+      
+      const ques4= document.getElementById('q4');
+      ques4.textContent = `Property names of sampleObject: ${propertyNamesSample}Property names of inheritedObject: ${propertyNamesInherited}`;
+      console.log(ques4)
+      </pre>
     <p id="q4"></p>
     <h4><span>Reason: </span>In this example, the getAllPropertyNames function takes an object as its parameter and retrieves all property names of both the object and its inherited prototypes. It uses a loop to traverse through the object and its prototypes using the Object.getPrototypeOf method. </h4>
     <script src="./index.js"></script>

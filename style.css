@@ -2,7 +2,10 @@ body{
     background-color: blue;
 }
 h2{
-    color: white;
+    color: rgb(220, 13, 13);
+}
+pre{
+    color: aliceblue;
 }
 p{
     font-size: 29px;
